@@ -25,6 +25,7 @@ GLOBAL
     height: auto;
     clear: both;
     display: table;
+    /* border: 1px solid red; */
 }
 
 [class*="col-"] {
@@ -64,9 +65,12 @@ SLIDESHOW
 
 #slide ul {
     position: relative;
+    /* iniciamos a la izquierda en 0% */
     left: 0%;
     margin: auto;
     height: auto;
+    /* Ancho de 400% ya que son 4 img y cada 
+    una ocupa el 100% */
     width: 400%;
     clear: both;
     display: table;
@@ -75,6 +79,9 @@ SLIDESHOW
 #slide ul li {
     position: relative;
     float: left;
+    /* 25% por cada una de las 4 img 
+    si lo sumamos nos da el 100% para cada una 
+    del total del 400% */
     width: 25%;
 }
 
@@ -96,10 +103,13 @@ SLIDESHOW
     display: inline-block;
     margin: 0px 5px;
     cursor: pointer;
-    opacity: .5;
+    opacity: 0.5;
     color: white;
     text-shadow: 0px 0px 5px #333;
 }
+
+
+/* Para que el primer circulo tenga una opacidad diferente a los demas. */
 
 #slide #paginacion li:first-child {
     opacity: 1;
@@ -107,9 +117,11 @@ SLIDESHOW
 
 #slide .flechas {
     position: absolute;
+    /* 1 em equivale a 16px */
     font-size: 2em;
     color: white;
     cursor: pointer;
+    /* Para que sobresalga por encima de cualquier caja. */
     z-index: 2;
 }
 
@@ -134,12 +146,12 @@ SLIDESHOW
 }
 
 #slide ul li .textoSlide h1 {
-    background: rgba(0, 0, 0, .5);
+    background: rgba(0, 0, 0, 0.5);
     padding: 5px 0;
 }
 
 #slide ul li .textoSlide h3 {
-    background: rgba(0, 0, 0, .5);
+    background: rgba(0, 0, 0, 0.5);
     padding-bottom: 10px;
 }
 
@@ -148,7 +160,7 @@ SLIDESHOW
 PANTALLA DE ESCRITORIO GRANDE - LARGE (lg) - revisamos en portatil o pc
 =============================================*/
 
-@media(min-width:1200px) {
+@media (min-width: 1200px) {
     .col-lg-12 {
         width: 100%;
     }
@@ -203,7 +215,7 @@ PANTALLA DE ESCRITORIO GRANDE - LARGE (lg) - revisamos en portatil o pc
 PANTALLA DE ESCRITORIO MEDIANO - MEDIUM (md) - revisamos en tablet horizontal 1024px
 =============================================*/
 
-@media(max-width:1199px) and (min-width:992px) {
+@media (max-width: 1199px) and (min-width: 992px) {
     .col-md-12 {
         width: 100%;
     }
@@ -258,7 +270,7 @@ PANTALLA DE ESCRITORIO MEDIANO - MEDIUM (md) - revisamos en tablet horizontal 10
 PANTALLA DE TABLET - SMALL (sm) - revisamos en tablet vertical 768px
 =============================================*/
 
-@media(max-width:991px) and (min-width:768px) {
+@media (max-width: 991px) and (min-width: 768px) {
     .col-sm-12 {
         width: 100%;
     }
@@ -308,10 +320,10 @@ PANTALLA DE TABLET - SMALL (sm) - revisamos en tablet vertical 768px
     }
     /*SLIDE*/
     #slide ul li .textoSlide h1 {
-        font-size: 20px;
+        font-size: 1em;
     }
     #slide ul li .textoSlide h3 {
-        font-size: 14px;
+        font-size: 1em;
     }
 }
 
@@ -320,7 +332,7 @@ PANTALLA DE TABLET - SMALL (sm) - revisamos en tablet vertical 768px
 PANTALLA DE PHONES - EXTRA SMALL (xs) - revisamos en movil horizontal 480px o vertical 320px
 =============================================*/
 
-@media(max-width:767px) {
+@media (max-width: 767px) {
     .col-xs-12 {
         width: 100%;
     }
