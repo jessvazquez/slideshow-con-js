@@ -54,6 +54,9 @@ var m = {
         // Para que cambie la intensidad de la opacidad del item seleccionado.
         p.paginacion[item].style.opacity = 1;
 
+        //Que la img que se desplaza tenga efecto de transition.
+        p.cajaSlide.style.transition = ".7s left ease-in-out";
+
     }
 
 
