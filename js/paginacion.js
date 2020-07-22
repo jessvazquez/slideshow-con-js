@@ -33,7 +33,7 @@ var m = {
         //Almacenamos el valor de item para cambiar a la img deseada.
         p.item = item.target.parentNode.getAttribute("item") - 1;
 
-        //Mandamos llamar al metodo que va a desplazar la img.
+        // Mandamos llamar al metodo que va a desplazar la img.
         m.movimientoSlide(p.item);
     },
 
@@ -44,6 +44,16 @@ var m = {
         // Cambiamos el porcentaje de la propiedad
         // left desde js. para cambiar la img.
         p.cajaSlide.style.left = -item * 100 + "%";
+
+
+        for (var i = 0; i < p.paginacion.length; i++) {
+            //seleccionamos todos los elementos de paginacion tendran una paginacion de .5
+            p.paginacion[i].style.opacity = .5;
+        }
+
+        // Para que cambie la intensidad de la opacidad del item seleccionado.
+        p.paginacion[item].style.opacity = 1;
+
     }
 
 
