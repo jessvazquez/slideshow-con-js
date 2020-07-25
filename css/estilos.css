@@ -25,7 +25,7 @@ GLOBAL
     height: auto;
     clear: both;
     display: table;
-    /* border: 1px solid red; */
+    border: 1px solid red;
 }
 
 [class*="col-"] {
@@ -153,6 +153,36 @@ SLIDESHOW
 #slide ul li .textoSlide h3 {
     background: rgba(0, 0, 0, 0.5);
     padding-bottom: 10px;
+}
+
+
+/*=============================================
+GALERIA
+=============================================*/
+
+#galeria {
+    position: relative;
+    width: 100%;
+    margin: auto
+}
+
+#galeria ul {
+    padding: 20px;
+}
+
+#galeria ul li {
+    padding: 10px;
+    cursor: pointer;
+    transition: .6s;
+}
+
+#galeria ul li:hover {
+    transition: .6s;
+    opacity: .6;
+}
+
+#galeria ul li img {
+    width: 100%;
 }
 
 
