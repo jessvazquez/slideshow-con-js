@@ -13,7 +13,9 @@ var p = {
     flechaAvanzar: document.querySelector("#slide #avanzar"),
 
     // Seleccionamos la cantidad de imagenes que tenemos.
-    imgSlide: document.querySelectorAll("#slide ul li")
+    imgSlide: document.querySelectorAll("#slide ul li"),
+
+    bandera: false,
 
 }
 
@@ -32,6 +34,9 @@ var m = {
         p.flechaAvanzar.addEventListener("click", m.avanzar);
         p.flechaRetroceder.addEventListener("click", m.retroceder);
 
+        //Deslizar automaticamente el Slide.
+        m.automatico();
+
     },
 
     paginacionSlide: function(item) {
@@ -40,7 +45,7 @@ var m = {
         //Accedemos al atributo item con getAttribute().
         console.log(item.target.parentNode.getAttribute("item")) - 1;
 
-        //Almacenamos el valor de item para cambiar a la img deseada.
+        //Almacenamos el valor de item (1,2,3,4) para cambiar a la img deseada.
         p.item = item.target.parentNode.getAttribute("item") - 1;
 
         // Mandamos llamar al metodo que va a desplazar la img.
@@ -70,9 +75,14 @@ var m = {
         m.movimientoSlide(p.item);
     },
 
-    movimientoSlide: function(item) {
-        // Para obtener el desplazamiento de la img.
 
+    movimientoSlide: function(item) {
+
+        //bandera=true, Significa que presionaron los circulos de paginacion.
+        //Por lo tanto se reinicia el ciclo.
+        p.bandera = true;
+
+        // Para obtener el desplazamiento de la img.
         console.log(-(item * 100) + "%");
 
         // Cambiamos el porcentaje de la propiedad
@@ -90,6 +100,20 @@ var m = {
 
         //Que la img que se desplaza tenga efecto de transition a la propiedad left del ul.
         p.cajaSlide.style.transition = ".7s left ease-in-out";
+
+    },
+
+    automatico: function() {
+
+        setInterval(() => {
+            if (p.bandera) {
+                //Se reinicia el ciclo del conteo entre cada img del slide.
+                p.bandera = false;
+            } else {
+                //Si no se han tocado los circulos de paginacion del slide.
+                m.avanzar();
+            }
+        }, 5000);
 
     }
 }
