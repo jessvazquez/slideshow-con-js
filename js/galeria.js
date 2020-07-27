@@ -76,11 +76,20 @@ var mg = {
         //Le concatenamos una etiqueta div.
         pg.modal.innerHTML = img.outerHTML + "<div>X</div>";
 
+        //Creando Media Querys desde JS.
+
+        if (window.matchMedia("(max-width: 1000px)").matches) {
+
+            pg.modal.style.width = "90%";
+
+        } else {
+
+            pg.modal.style.width = "60%";
+        }
 
 
         pg.modal.style.display = "block";
         pg.modal.style.position = "relative";
-        pg.modal.style.width = "60%";
         pg.modal.style.top = "50%";
         pg.modal.style.left = "50%";
 
