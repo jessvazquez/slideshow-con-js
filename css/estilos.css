@@ -25,7 +25,7 @@ GLOBAL
     height: auto;
     clear: both;
     display: table;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 [class*="col-"] {

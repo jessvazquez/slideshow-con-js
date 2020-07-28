@@ -4,7 +4,9 @@ var pm = {
 
     figuras: document.querySelectorAll("#efectoMouse figure"),
 
-    altura: null,
+    mouseX: 0,
+
+    mouseY: 0,
 
 }
 
@@ -41,7 +43,7 @@ var mm = {
             //de la img agregada. 
             pm.zona.style.height = pm.figuras[0].childNodes[0].height + "px";
 
-            console.log(pm.zona.style.height);
+            // console.log(pm.zona.style.height);
 
         }, 500)
 
@@ -52,6 +54,17 @@ var mm = {
         //console.log(movimiento);
         //Con offset tomamos las coordenadas de la caja.
         //console.log("X= " + movimiento.offsetX, "Y= " + movimiento.offsetY);
+        pm.mouseX = -movimiento.offsetX;
+        pm.mouseY = movimiento.offsetY;
+
+        for (var i = 0; i < pm.figuras.length; i++) {
+
+            //Si le agregamos el +50, 
+            //De esta manera se mueven las img a diferentes velocidades
+            pm.figuras[i].style.left = pm.mouseX / (i * 100 + 50) + "%";
+            pm.figuras[i].style.top = pm.mouseY / (i * 100 + 50) + "%";
+
+        }
 
     }
 
