@@ -27,7 +27,6 @@ var mm = {
 
             //Ponemos cada figura en diferente numero de zIndex. 0 -1 -2.
             pm.figuras[i].style.zIndex = -i;
-
         }
 
         //Si lo ponemos de la siguiente manera nos va a decir que su altura es 0:
@@ -36,7 +35,7 @@ var mm = {
         //el navegador primero carga el js antes que la imagen 
         //por lo tanto el resultado es cero.
 
-        //Por lo tanto debemos poner un retardo con un setTimeout para que todo cargue.
+        //Debemos poner un retardo con un setTimeout para que todo cargue.
         setTimeout(() => {
 
             //De esta manera hacemos que la caja del mouse sea del tamano
