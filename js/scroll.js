@@ -6,6 +6,8 @@ var ps = {
 
     cajaScroll: document.querySelector("#scroll"),
 
+    cabezote: document.querySelector("#cabezote"),
+
 }
 
 var ms = {
@@ -23,11 +25,21 @@ var ms = {
         // console.log(window.pageYOffset);
         ps.posicionScroll = window.pageYOffset;
 
+        if (ps.posicionScroll > 100) {
+
+            ps.cabezote.style.position = "fixed";
+            ps.cabezote.style.zIndex = 10;
+
+        } else {
+            ps.cabezote.style.position = "relative";
+            ps.cabezote.style.zIndex = 0;
+        }
+
         // console.log(ps.cajaScroll.offsetTop);
 
         // offsetTop nos sirve para saber la posicion de la 
         // parte superior de cajaScroll.
-        if (ps.posicionScroll > ps.cajaScroll.offsetTop) {
+        if (ps.posicionScroll > ps.cajaScroll.offsetTop - 200) {
 
             for (var i = 0; i < ps.articulos.length; i++) {
 
@@ -36,7 +48,6 @@ var ms = {
             }
 
         } else {
-
 
             for (var i = 0; i < ps.articulos.length; i++) {
 
