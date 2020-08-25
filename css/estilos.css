@@ -363,6 +363,12 @@ box en su span*/
     background: url(../img/radio.jpg);
 }
 
+#formulario label span.obligatorio {
+    /* display: none; */
+    opacity: 0;
+    color: #777;
+}
+
 
 /*=============================================
 PANTALLA DE ESCRITORIO GRANDE - LARGE (lg) - revisamos en portatil o pc
