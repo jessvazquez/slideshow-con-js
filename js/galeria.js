@@ -40,7 +40,7 @@ var mg = {
     },
 
     lightbox: function(img) {
-        //Para anadir una campo al html desde js usamos appendChild().
+        //Para anadir un campo al html desde js usamos appendChild().
         //Le decimos que elemento queremos crear con document.createElement.
         //Con setAttribute le agregamos un atributo como el id.
         pg.body.appendChild(document.createElement("DIV")).setAttribute("id", "lightbox");
@@ -85,8 +85,8 @@ var mg = {
         } else {
 
             pg.modal.style.width = "60%";
-        }
 
+        }
 
         pg.modal.style.display = "block";
         pg.modal.style.position = "relative";

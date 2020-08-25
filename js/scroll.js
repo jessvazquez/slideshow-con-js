@@ -8,6 +8,13 @@ var ps = {
 
     cabezote: document.querySelector("#cabezote"),
 
+    botonera: document.querySelectorAll("nav ul li a"),
+
+    ruta: null,
+
+    intervalo: null,
+
+    destinoScroll: 0,
 }
 
 var ms = {
@@ -15,6 +22,12 @@ var ms = {
     inicioScroll: function() {
 
         document.addEventListener("scroll", ms.parallax);
+
+        for (var i = 0; i < ps.botonera.length; i++) {
+
+            ps.botonera[i].addEventListener("click", ms.desplazamiento);
+
+        }
 
     },
 
@@ -57,8 +70,40 @@ var ms = {
 
         }
 
-    }
+    },
 
+    desplazamiento: function(ruta) {
+        //preventDefault quita los efectos
+        //por defecto del navegador como 
+        //por ejemplo saltar con el href.
+        //-----Comenta la linea de abajo para que veas su efecto.-----
+        ruta.preventDefault();
+
+        //Target nos sirve para seleccionar la etiqueta
+        //getAttribute nos permite seleccionar un 
+        //atributo de la etiqueta.
+        ps.ruta = ruta.target.getAttribute("href");
+
+        // console.log(ruta.target.getAttribute("href"));
+
+        ps.destinoScroll = document.querySelector(ps.ruta).offsetTop;
+
+        ps.intervalo = setInterval(function() {
+
+            if (ps.posicionScroll < ps.destinoScroll) {
+                ps.posicionScroll += 100;
+                if (ps.posicionScroll >= ps.destinoScroll) {
+                    ps.posicionScroll = ps.destinoScroll;
+                    clearInterval(ps.intervalo);
+                }
+            }
+            //scrollTo(x,y) nos permite deslizar la pagina 
+            //hacia la coordenada x o y.
+
+            window.scrollTo(0, ps.posicionScroll);
+        }, 50)
+
+    }
 
 }
 
