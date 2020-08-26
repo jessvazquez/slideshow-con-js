@@ -16,6 +16,7 @@ mf = {
         for (var i = 0; i < pf.entradas.length; i++) {
 
             pf.entradas[i].addEventListener("focus", mf.eventoFocus);
+            pf.entradas[i].addEventListener("blur", mf.eventoBlur);
 
         }
 
@@ -36,6 +37,12 @@ mf = {
 
         }
 
+    },
+
+    eventoBlur: function(input) {
+        document.querySelector("[for=" + input.target.id + "] .obligatorio").style.opacity = 0;
+        document.querySelector("[for=" + input.target.id + "] .obligatorio").style.color = "#777";
+        document.querySelector("#" + input.target.id).style.background = "white";
     }
 
 }
