@@ -9,6 +9,15 @@ pf = {
     //Para la expresion regular.
     expresionRegular: null,
 
+    //Checamos si el nombre, correo y contrasena cumplen con las Exp. regulares.
+    validaNombre: false,
+
+    validaCorreo: false,
+
+    validaContrasena: false,
+
+    validaTerminos: false,
+
 }
 
 mf = {
@@ -82,6 +91,9 @@ mf = {
 
                         document.querySelector("[for=" + input.target.id + "] .error").innerHTML = '<span style="color:red">Error con el nombre: ' + input.target.placeholder + '</span>'; // +input.target.placeholder+
                         // [for=input.target.id] .error
+
+                        pf.validaNombre = false;
+
                     } else {
 
                         //Si los datos estan correctos entonces removemos el DIV creado desde JS.
@@ -93,6 +105,8 @@ mf = {
                         );
 
                         document.querySelector("#" + input.target.id).style.background = "#a1ec78";
+
+                        pf.validaNombre = true;
 
                     }
                     break;
@@ -108,6 +122,8 @@ mf = {
 
                         document.querySelector("[for=" + input.target.id + "] .error").innerHTML = '<span style="color:red">Error con la email: ' + input.target.placeholder + '</span>';
 
+                        pf.validaCorreo = false;
+
                     } else {
 
                         //Si los datos estan correctos entonces removemos el DIV creado desde JS.
@@ -119,6 +135,8 @@ mf = {
                         );
 
                         document.querySelector("#" + input.target.id).style.background = "#a1ec78";
+
+                        pf.validaCorreo = true;
                     }
 
                     break;
@@ -136,6 +154,8 @@ mf = {
 
                         document.querySelector("[for=" + input.target.id + "] .error").innerHTML = '<span style="color:red">Error con la contraseña: ' + input.target.placeholder + '</span>';
 
+                        pf.validaContrasena = false;
+
                     } else {
 
                         //Si los datos estan correctos entonces removemos el DIV creado desde JS.
@@ -147,11 +167,46 @@ mf = {
                         );
 
                         document.querySelector("#" + input.target.id).style.background = "#a1ec78";
-                    }
 
+                        pf.validaContrasena = true;
+                    }
 
                     break;
             }
+
+        } else {
+            //Removemos con parentNode.removeChild(ponemos el la ubicacion de div creado desde JS.)
+            //Se elimina asi mismo.
+            document.querySelector("[for=" + input.target.id + "] .error").parentNode.removeChild(
+                document.querySelector("[for=" + input.target.id + "] .error")
+            );
+
+            document.querySelector("#" + input.target.id).style.background = "white";
+        }
+
+    },
+
+    validaFormulario: function() {
+
+        pf.validaTerminos = document.querySelector("#terminos").checked;
+
+        console.log(pf.validaTerminos);
+
+        if (!pf.validaContrasena || !pf.validaCorreo || !pf.validaNombre) {
+
+            document.querySelector("#mensajeError").innerHTML = '<span style="color:red">Datos con errores</span>';
+
+            return false;
+
+        } else if (!pf.validaTerminos) {
+
+            document.querySelector("#mensajeError").innerHTML = '<span style="color:red">Acepte terminos y condiciones</span>';
+
+            return false;
+
+        } else {
+
+            return true;
 
         }
 

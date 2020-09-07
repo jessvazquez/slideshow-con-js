@@ -18,14 +18,20 @@
     <div class="content-fluid">
 
         <!--                            CABEZOTE -->
+
         <header class="row" id="cabezote">
+
             <figure id="logotipo" class="col-lg-2 col-md-3 col-sm-2 col-xs-12">
                 <img src="img/logotipo.png" alt="">
             </figure>
             <div class="col-lg-4 col-md-2 col-sm-1 col-xs-0">
                 <br>
             </div>
-            <nav class="col-lg-6 col-ms-7 col-sm-9 col-xs-12">
+
+            <div id="btnMovil" class="col-lg-0 col-ms-0 col-sm-0 col-xs-12">
+                <span class="fa fa-bars"></span>
+            </div>
+            <nav class="col-lg-6 col-ms-7 col-sm-9 col-xs-0">
                 <ul>
                     <li class="col-lg-2 col-md-2 col-sm-2 col-xs-12"><a href="#slide">Inicio </a></li>
                     <li class="col-lg-2 col-md-2 col-sm-2 col-xs-12"><a href="#galeria"> Galeria</a></li>
@@ -220,8 +226,8 @@
 
         <div class="row" id="formulario">
 
-            <form method="POST">
-                <h1>Ingrese sus datos.</h1>
+            <h1>Ingrese sus datos.</h1>
+            <form method="POST" action="formulario.php" onsubmit="return mf.validaFormulario()">
                 <label for="nombre">Ingrese su nombre <span class="obligatorio" class="correcto">*Campo
                         obligatorio</span></label>
                 <input id="nombre" type="text" class="validar" value="" placeholder="El nombre debe tener al menos 2 letras y maximo 10" maxlength="10" required>
@@ -280,6 +286,8 @@
                     </a>
                 </label>
 
+                <label id="mensajeError"></label>
+
                 <input type="submit" value="Enviar">
             </form>
         </div>
@@ -289,6 +297,7 @@
     <script src="js/mouse.js"></script>
     <script src="js/scroll.js"></script>
     <script src="js/formulario.js"></script>
+    <script src="js/botonera.js"></script>
 </body>
 
 </html>

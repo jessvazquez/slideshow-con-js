@@ -6,7 +6,11 @@ pf = {
   // Para obtener el valor del input.
   valor: null,
   //Para la expresion regular.
-  expresionRegular: null
+  expresionRegular: null,
+  //Checamos si el nombre, correo y contrasena cumplen con las Exp. regulares.
+  ValidaNombre: false,
+  ValidaCorreo: false,
+  ValidaContrasena: false
 };
 mf = {
   inicioFormulario: function inicioFormulario() {
@@ -55,12 +59,15 @@ mf = {
 
             document.querySelector("[for=" + input.target.id + "] .error").innerHTML = '<span style="color:red">Error con el nombre: ' + input.target.placeholder + '</span>'; // +input.target.placeholder+
             // [for=input.target.id] .error
+
+            pf.ValidaNombre = false;
           } else {
             //Si los datos estan correctos entonces removemos el DIV creado desde JS.
             //Removemos con parentNode.removeChild(ponemos el la ubicacion de div creado desde JS.)
             //Se elimina asi mismo.
             document.querySelector("[for=" + input.target.id + "] .error").parentNode.removeChild(document.querySelector("[for=" + input.target.id + "] .error"));
             document.querySelector("#" + input.target.id).style.background = "#a1ec78";
+            pf.ValidaNombre = true;
           }
 
           break;
@@ -72,12 +79,14 @@ mf = {
             console.log("Error con email."); //Seleccionamos el div que acabamos de crear en el metodo focus.
 
             document.querySelector("[for=" + input.target.id + "] .error").innerHTML = '<span style="color:red">Error con la email: ' + input.target.placeholder + '</span>';
+            pf.ValidaCorreo = false;
           } else {
             //Si los datos estan correctos entonces removemos el DIV creado desde JS.
             //Removemos con parentNode.removeChild(ponemos el la ubicacion de div creado desde JS.)
             //Se elimina asi mismo.
             document.querySelector("[for=" + input.target.id + "] .error").parentNode.removeChild(document.querySelector("[for=" + input.target.id + "] .error"));
             document.querySelector("#" + input.target.id).style.background = "#a1ec78";
+            pf.ValidaCorreo = true;
           }
 
           break;
@@ -90,16 +99,30 @@ mf = {
             console.log("Error con contrasena."); //Seleccionamos el div que acabamos de crear en el metodo focus.
 
             document.querySelector("[for=" + input.target.id + "] .error").innerHTML = '<span style="color:red">Error con la contraseña: ' + input.target.placeholder + '</span>';
+            pf.ValidaContrasena = false;
           } else {
             //Si los datos estan correctos entonces removemos el DIV creado desde JS.
             //Removemos con parentNode.removeChild(ponemos el la ubicacion de div creado desde JS.)
             //Se elimina asi mismo.
             document.querySelector("[for=" + input.target.id + "] .error").parentNode.removeChild(document.querySelector("[for=" + input.target.id + "] .error"));
             document.querySelector("#" + input.target.id).style.background = "#a1ec78";
+            pf.ValidaContrasena = true;
           }
 
           break;
       }
+    } else {
+      //Removemos con parentNode.removeChild(ponemos el la ubicacion de div creado desde JS.)
+      //Se elimina asi mismo.
+      document.querySelector("[for=" + input.target.id + "] .error").parentNode.removeChild(document.querySelector("[for=" + input.target.id + "] .error"));
+      document.querySelector("#" + input.target.id).style.background = "white";
+    }
+  },
+  validaFormulario: function validaFormulario() {
+    if (pf.ValidaContrasena || pf.ValidaCorreo || pf.ValidaNombre) {
+      return true;
+    } else {
+      return false;
     }
   }
 };
